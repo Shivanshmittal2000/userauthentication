@@ -1,0 +1,89 @@
+{% extends 'login/base.html' %} {% block body %}
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-sm-4 my-3">
+      <h1 class="alert alert-success">Sign up !</h1>
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label class="form-label">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            name="username"
+            aria-describedby="userhelp"
+          />
+          <div id="userhelp" class="form-text" style="color: blue">
+            <b>{{usermessage}} </b>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            aria-describedby="emailHelp"
+          />
+          <div id="emailHelp" class="form-text" style="color: green">
+            <b> {{emailmessage}} </b>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            id="password"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Confirm Password</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password2"
+            id="password2"
+            aria-describedby="checkpassword"
+          />
+          <div id="checkpassword" style="color: red" class="form-text">
+            <b>{{passwordmessage}} </b>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Address</label>
+          <textarea
+            type="password"
+            class="form-control"
+            name="address"
+            id="address"
+          ></textarea>
+        </div>
+        <button type="submit" id="signup" class="btn btn-primary">
+          Signup
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block js %}
+<script>
+  <!--parse=JSON.parse(document.getElementById('checkpassword').textContent)-->
+  <!--console.log(parse)-->
+    $(document).ready(function () {
+      console.log("hello");
+      console.log("{{ message|length }}");
+      console.log('hey');
+
+      a={{message|length}}
+     if (a>2) {
+       console.log("hey");
+
+     }
+       });
+    // $('#submit')
+</script>
+{% endblock %}

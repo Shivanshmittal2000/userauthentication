@@ -1,0 +1,42 @@
+{% extends 'login/base.html' %} {% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 my-3">
+      <h1 class="alert alert-success">Login !</h1>
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label class="form-label">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            aria-describedby="emailHelp"
+          />
+          <div id="emailHelp" class="form-text">
+            We'll never share your email with anyone else.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            id="password"
+          />
+        </div>
+        <button type="submit" id="login" class="btn btn-primary">Login</button>
+        <a href="/signup/" class="btn btn-success">Sign up </a>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block js %}
+<script>
+  $(document).ready(function () {
+    console.log("hello");
+  });
+</script>
+{% endblock %}
