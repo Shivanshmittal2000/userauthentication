@@ -124,22 +124,22 @@ def emailedit(request,id):
         idfilter=User.objects.get(id=id)
         print(idfilter)
         email=request.POST.get('updatedinfo','')
-        password=request.POST.get('updatepassword','')
+        password=request.POST.get('updatedpassword','')
         passwordfilter=User.objects.filter(password=password)
         emailfilter=User.objects.filter(email=email)
         alreadypassword=idfilter.password
         alreadyemail=idfilter.email
+        ischange=True
         if len(emailfilter)>0:
             if alreadyemail==email:
-                # print("email is same as previous one ")
-                ischange="email is same as previous one"
                 if alreadypassword==password:
-                    ischange +="This password is already taken by you"
+                    ischange ="This password is current password please write different password for change"
                 elif password == "":
-                    ischange += "password cannot be blank"
+                    ischange = "Password cannot be blank"
                 else :
                     idfilter.email=email
                     idfilter.password=password
+                    idfilter.password2=password
                     idfilter.save()
                     print(idfilter.email)
                     print(idfilter.password)
@@ -147,19 +147,20 @@ def emailedit(request,id):
                 
             else :
                 ischange="Email already registered choose another email"
-            return render(request,'login/show.html',{'users':users,'userdetail':iffil[0],'ischange':ischange})
         else :
             if alreadypassword==password:
-                ischange +="This password is already taken by you"
+                ischange ="This password is already taken by you"
             elif password == "":
-                ischange += "password cannot be blank"
+                ischange = "password cannot be blank"
             else :
                 idfilter.email=email
                 idfilter.password=password
+                idfilter.password2=password
                 idfilter.save()
                 print(idfilter.email)
                 print(idfilter.password)
                 return HttpResponseRedirect('/')
+        return render(request,'login/show.html',{'users':users,'userdetail':iffil[0],'ischange':ischange})
 
         
 

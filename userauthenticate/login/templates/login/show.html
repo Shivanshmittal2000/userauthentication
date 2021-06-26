@@ -51,9 +51,18 @@
         <form action="{% url 'emailediting' userdetail.id %}" method="POST">
           {% csrf_token %}
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Enter Email:</label>
-            <input type="email" class="form-control" name='updatedinfo' id="recipient-name">
-            <input type="password" class="form-control" name='updatedpassword' >
+            <div class='row'>
+              <div class='col-sm-4'>
+                <label for="recipient-name" class="col-form-label">Enter Email:</label>
+              </div>
+              <div class='col-sm-6'>
+                <input type="email" class="form-control" name='updatedinfo' id="recipient-name">
+              </div>
+            </div>
+            <div class='row'>
+              <div class='col-sm-4'>Password</div>
+              <div class='col-sm-6'> <input type="password" class="form-control" name='updatedpassword' ></div>
+            </div>
           </div>
           <!-- <div class="form-group">
             <label for="message-text" class="col-form-label">Message:</label>
