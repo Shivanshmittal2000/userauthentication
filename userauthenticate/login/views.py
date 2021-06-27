@@ -10,8 +10,8 @@ def login(request):
         email=request.POST['email']
         password=request.POST['password']
         requireduser=User.objects.filter(email=email)
-        print(requireduser[0].password,password)
-        if requireduser[0].password == password:
+        # print(requireduser[0].password,password)
+        if requireduser and requireduser[0].password == password:
             return show(request,requireduser[0].id)
 
             # newlist=[]
@@ -26,7 +26,7 @@ def login(request):
         # print(requireduser)
         # print(type(users))
         # print(users[0])
-    return render(request,'login/index.html',{'users':users})
+    return render(request,'login/index.html')
 
 def signup(request):
     usermessage=''
